@@ -1,0 +1,22 @@
+<div
+  (click)="onContainerClicked($event)"
+  class="modal fade"
+  tabindex="-1"
+  [ngClass]="{'in': visibleAnimate}"
+  [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}"
+  *ngIf="visible">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <ng-container *ngTemplateOutlet="header"></ng-container>
+        <button class="close" data-dismiss="modal" type="button" aria-label="Close" (click)="close()">×</button>
+      </div>
+      <div class="modal-body">
+        <ng-container *ngTemplateOutlet="body"></ng-container>
+      </div>
+      <div class="modal-footer">
+        <ng-container *ngTemplateOutlet="footer"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
