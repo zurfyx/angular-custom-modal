@@ -1,5 +1,15 @@
-I'm &lt;app-modal-content&gt; and it's only the &lt;modal&gt; who brought me to live.
+I'm &lt;app-modal-content&gt; and it's only the &lt;modal&gt; who brought me to live. This component
+will get destroyed when the modal is closed.
 
 <pre>
-
+  <code>
+&lt;button (click)=&quot;componentInsideModal.open()&quot;&gt;&lt;h2&gt;Component inside modal&lt;/h2&gt;&lt;/button&gt;
+&lt;modal #componentInsideModal&gt;
+  &lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;
+  &lt;ng-template #modalBody&gt;
+    &lt;app-modal-content&gt;&lt;/app-modal-content&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template #modalFooter&gt;&lt;/ng-template&gt;
+&lt;/modal&gt;
+  </code>
 </pre>
