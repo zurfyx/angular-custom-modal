@@ -99,7 +99,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);", ""]);
 
 // module
-exports.push([module.i, "/* Specific Modal Styles */\n.modal-dialog {\n  color: #333;\n  background-color: #fff;\n  padding: 25px; }\n\n.modal-header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-bottom: 14px; }\n  .modal-header > h2 {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1; }\n  .modal-header .close {\n    background-color: #fff;\n    font-weight: 100;\n    font-size: 2.5rem;\n    border: 0;\n    border-radius: 999px;\n    padding: 0;\n    margin: 0;\n    line-height: 1rem;\n    height: 4rem;\n    width: 4rem; }\n    .modal-header .close:hover {\n      background-color: #ccc; }\n\n/* /Specific Modal Styles */\nhtml, body {\n  color: #444;\n  font-family: 'Open Sans', sans-serif;\n  background: #4aabc9;\n  background: linear-gradient(135deg, #4aabc9 0%, #7db9e8 100%);\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  height: 100%; }\n\nbutton {\n  cursor: pointer;\n  font-family: 'Open Sans', sans-serif;\n  transition: .2s all; }\n  button:focus {\n    outline: none; }\n\nbutton.big {\n  color: #444;\n  padding: 2rem 4rem;\n  border: 0;\n  border-radius: 4px;\n  background-color: #fff; }\n  button.big + button.big {\n    margin-left: 10px; }\n  button.big:hover {\n    background-color: #e4e4e4; }\n\nh1, h2 {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 200; }\n\nh1 {\n  color: #fff;\n  padding: 30px;\n  margin: 0; }\n\n#content {\n  height: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n#actions {\n  margin-top: -100px;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n", ""]);
+exports.push([module.i, "/* Specific Modal Styles */\n.modal-dialog {\n  color: #333;\n  background-color: #fff;\n  padding: 25px; }\n\n.modal.in {\n  display: initial; }\n\n.modal-header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-bottom: 14px; }\n  .modal-header > h2 {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1; }\n  .modal-header .close {\n    background-color: #fff;\n    font-weight: 100;\n    font-size: 2.5rem;\n    border: 0;\n    border-radius: 999px;\n    padding: 0;\n    margin: 0;\n    line-height: 1rem;\n    height: 4rem;\n    width: 4rem; }\n    .modal-header .close:hover {\n      background-color: #ccc; }\n\n/* /Specific Modal Styles */\nhtml, body {\n  color: #444;\n  font-family: 'Open Sans', sans-serif;\n  background: #4aabc9;\n  background: linear-gradient(135deg, #4aabc9 0%, #7db9e8 100%);\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  height: 100%; }\n\nbutton {\n  cursor: pointer;\n  font-family: 'Open Sans', sans-serif;\n  transition: .2s all; }\n  button:focus {\n    outline: none; }\n\nbutton.big {\n  color: #444;\n  padding: 2rem 4rem;\n  border: 0;\n  border-radius: 4px;\n  background-color: #fff; }\n  button.big + button.big {\n    margin-left: 10px; }\n  button.big:hover {\n    background-color: #e4e4e4; }\n\nh1, h2 {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 200; }\n\nh1 {\n  color: #fff;\n  padding: 30px;\n  margin: 0; }\n\n#content {\n  height: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n#actions {\n  margin-top: -100px;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n", ""]);
 
 // exports
 
@@ -237,7 +237,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 /***/ "../../../../../src/modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div\n  (click)=\"onContainerClicked($event)\"\n  class=\"modal fade\"\n  tabindex=\"-1\"\n  [ngClass]=\"{'in': visibleAnimate}\"\n  [ngStyle]=\"{'display': visible ? 'block' : 'none', 'opacity': visibleAnimate ? 1 : 0}\"\n  *ngIf=\"visible\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <ng-container *ngTemplateOutlet=\"header\"></ng-container>\n        <button class=\"close\" data-dismiss=\"modal\" type=\"button\" aria-label=\"Close\" (click)=\"close()\">×</button>\n      </div>\n      <div class=\"modal-body\">\n        <ng-container *ngTemplateOutlet=\"body\"></ng-container>\n      </div>\n      <div class=\"modal-footer\">\n        <ng-container *ngTemplateOutlet=\"footer\"></ng-container>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div\n  (click)=\"onContainerClicked($event)\"\n  class=\"modal fade\"\n  tabindex=\"-1\"\n  [ngClass]=\"{'in': visibleAnimate}\"\n  [ngStyle]=\"{'display': visible ? 'block' : 'none', 'opacity': visible ? 1 : 0}\"\n  *ngIf=\"visible\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <ng-container *ngTemplateOutlet=\"header\"></ng-container>\n        <button class=\"close\" data-dismiss=\"modal\" type=\"button\" aria-label=\"Close\" (click)=\"close()\">×</button>\n      </div>\n      <div class=\"modal-body\">\n        <ng-container *ngTemplateOutlet=\"body\"></ng-container>\n      </div>\n      <div class=\"modal-footer\">\n        <ng-container *ngTemplateOutlet=\"footer\"></ng-container>\n      </div>\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -279,7 +279,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ModalComponent = (function () {
     function ModalComponent() {
         this.visible = false;
-        this.visibleAnimate = false;
     }
     ModalComponent.prototype.ngOnDestroy = function () {
         // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -287,16 +286,12 @@ var ModalComponent = (function () {
         this.close();
     };
     ModalComponent.prototype.open = function () {
-        var _this = this;
         document.body.style.overflow = 'hidden';
         this.visible = true;
-        setTimeout(function () { return _this.visibleAnimate = true; }, 200);
     };
     ModalComponent.prototype.close = function () {
-        var _this = this;
         document.body.style.overflow = 'auto';
-        this.visibleAnimate = false;
-        setTimeout(function () { return _this.visible = false; }, 100);
+        this.visible = false;
     };
     ModalComponent.prototype.onContainerClicked = function (event) {
         if (event.target.classList.contains('modal')) {
