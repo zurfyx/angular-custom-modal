@@ -99,6 +99,12 @@ https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateou
 https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b<br>
 https://netbasal.com/understanding-viewchildren-contentchildren-and-querylist-in-angular-896b0c689f6e<br>
 
+## Styles
+
+The library carries the minimum generic styles. Styles are up to you.
+
+You can find the demo copy-paste styles in [app.component.scss](https://github.com/zurfyx/angular-custom-modal/blob/master/example/app/app.component.scss) (specific modal styles starting [here](https://github.com/zurfyx/angular-custom-modal/blob/master/example/app/app.component.scss#L3)).
+
 ## TODO
 
 - [ ] Modal header/body/footer as a component or directive (not sure if feasable)
