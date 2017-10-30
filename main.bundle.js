@@ -249,7 +249,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/deep/ .modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  min-height: 100%;\n  background-color: rgba(0, 0, 0, 0.15); }\n\n/deep/ .modal-dialog {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n", ""]);
+exports.push([module.i, "/deep/ .modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  min-height: 100%;\n  background-color: rgba(0, 0, 0, 0.15);\n  z-index: 42; }\n\n/deep/ .modal-dialog {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n", ""]);
 
 // exports
 
