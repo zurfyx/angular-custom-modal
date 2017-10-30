@@ -1,8 +1,15 @@
 # Angular Custom Modal
 
+[![npm Version](https://img.shields.io/npm/v/angular-custom-modal.svg)](https://www.npmjs.com/package/angular-custom-modal)
+[![Build Status](https://travis-ci.org/zurfyx/angular-custom-modal.svg?branch=master)](https://travis-ci.org/zurfyx/angular-custom-modal)
+
 > Angular2+ Modal / Dialog (with inner component support).
 
 A continuation of https://stackoverflow.com/a/46949848
+
+## Demo
+
+[zurfyx.github.io/angular-custom-modal](https://zurfyx.github.io/angular-custom-modal/)
 
 ## Install
 
