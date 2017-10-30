@@ -11,6 +11,7 @@
   "scripts": {
     "start": "ng serve",
     "build": "ng-packagr -p ng-package.json",
+    "build-ghpages": "ng build --base-href \"https://zurfyx.github.io/angular-custom-modal/\" --output-path \"dist-ghpages\"",
     "test": "npm run lint && ng test --watch false",
     "test-watch": "ng test",
     "e2e": "ng e2e",
