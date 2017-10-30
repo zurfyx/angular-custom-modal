@@ -23,3 +23,15 @@ script:
   - npm run test
   - npm run e2e
   - npm run build
+
+before_deploy:
+  - cd dist
+
+deploy:
+  provider: npm
+  email: zurfyx+npm@gmail.com
+  api_key: 
+    secure: "Yl5Yvv1ORo81KuKlL4irRQxnuqlRDlFaxRltiNV3LvUKFRDOlxPMOJLdTateCYk/DbO7dV3pAXv/KIfvPAfMkC61A7x7r9oAZEZb4aQWLJKBvhmlPAZTCNb3FuMoJgW7tR8yExgTrlerekjU3cfMbfkoGpgQjRWPUJillu8/YPamyP3m+KrTxRSPC7CZeERqbxdhJn8iJog35l9tTUc0rdWoevs6XkXCcr+2IJYPYcLLsldVcGoTAZrOkt3AqkrDGHElF/XPJKooH+pJRtiXnNPpYMscfd4YhdRcH/YagBt0YIQA6DN6B9D/3LTHKPu+5srjLG58+ayKBfhoPI6y3szt3JzXmeoaXKiOBxZvmlF6DSUn9FtjJM+lJzsps3awoJGlWjNqofrIuudCJ4GvSGOtpA7rRrfgdjqhoBFZpO8WUL9ObuJyso9nrqb5enkdrES7jLJnGbgsfUGRBZaIBThvvm7wiraw3DopDqTqt7owJNQiurnOpVg00/SEfSrGKLf2c+jR3YbbzQf3wsvCx7t442F7AP+C+/5QCZFG1Y/rR+0JBzqU07UTMtKIUeOiTOX86+gNdy0jvGw54wjCjZirkH0IDwSKW59OK+/WN10HJUhnrbmFPYyahpymj5PQcZW7zYZrChqflEGbzuhN2BGng5OntayjvcziZIZ7+yc="
+  on:
+    branch: master
+  skip_cleanup: true
