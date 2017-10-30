@@ -27,6 +27,11 @@
       }
     }
   ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
   "lint": [
     {
       "project": "example/tsconfig.app.json",

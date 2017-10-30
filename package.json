@@ -7,6 +7,7 @@
     "build": "ng-packagr -p ng-package.json",
     "test": "npm run lint && ng test --watch false",
     "test-watch": "ng test",
+    "e2e": "ng e2e",
     "lint": "ng lint"
   },
   "private": false,
