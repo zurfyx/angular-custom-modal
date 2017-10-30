@@ -1,5 +1,11 @@
 {
   "name": "angular-custom-modal",
+  "description": "Angular2+ Modal / Dialog (with inner component support).",
+  "author": {
+    "name": "Gerard Rovira Sánchez",
+    "email": "zurfyx@gmail.com",
+    "url": "zurfyx.com"
+  },
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -10,6 +16,20 @@
     "e2e": "ng e2e",
     "lint": "ng lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zurfyx/angular-custom-modal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zurfyx/angular-custom-modal/issues"
+  },
+  "homepage": "https://github.com/zurfyx/angular-custom-modal#readme",
+  "keywords": [
+    "modal",
+    "dialog",
+    "angular",
+    "typescript"
+  ],
   "private": false,
   "dependencies": {
     "@angular/animations": "^4.2.4",
@@ -46,5 +66,8 @@
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
     "typescript": "~2.3.3"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
