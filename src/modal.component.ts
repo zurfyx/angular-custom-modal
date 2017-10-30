@@ -13,7 +13,6 @@ export class ModalComponent implements OnDestroy {
   @ContentChild('modalFooter') footer: TemplateRef<any>;
 
   public visible = false;
-  public visibleAnimate = false;
 
   ngOnDestroy() {
     // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -25,14 +24,12 @@ export class ModalComponent implements OnDestroy {
     document.body.style.overflow = 'hidden';
 
     this.visible = true;
-    setTimeout(() => this.visibleAnimate = true, 200);
   }
 
   close(): void {
     document.body.style.overflow = 'auto';
 
-    this.visibleAnimate = false;
-    setTimeout(() => this.visible = false, 100);
+    this.visible = false;
   }
 
   onContainerClicked(event: MouseEvent): void {
