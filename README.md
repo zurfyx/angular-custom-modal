@@ -16,7 +16,7 @@ npm install angular-custom-modal
 - Bootstrap CSS compatible
 - Custom modal header, body and header
 - Modal stacking support
-- Lazy inner component initialization, and ngOnDestroy(ed) when modal is closed
+- Lazy inner component initialization, and `ngOnDestroy`(ed) when modal is closed
 - Parent scrolling disabled when modal is visible
 
 ## Usage
@@ -92,7 +92,7 @@ https://blog.angular-university.io/angular-ng-template-ng-container-ngtemplateou
 https://medium.com/claritydesignsystem/ng-content-the-hidden-docs-96a29d70d11b<br>
 https://netbasal.com/understanding-viewchildren-contentchildren-and-querylist-in-angular-896b0c689f6e<br>
 
-# TODO
+## TODO
 
 - [ ] Modal header/body/footer as a component or directive (not sure if feasable)
 - [ ] Optional styles
