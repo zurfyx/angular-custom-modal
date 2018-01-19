@@ -1,6 +1,6 @@
 /* tslint:disable:component-selector */
 
-import { Component, OnDestroy, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnDestroy, ContentChild, TemplateRef, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'modal',
@@ -8,6 +8,8 @@ import { Component, OnDestroy, ContentChild, TemplateRef } from '@angular/core';
   styleUrls: ['modal.component.scss'],
 })
 export class ModalComponent implements OnDestroy {
+  @Input() customCloseButtonTemplate: TemplateRef<any>;
+
   @ContentChild('modalHeader') header: TemplateRef<any>;
   @ContentChild('modalBody') body: TemplateRef<any>;
   @ContentChild('modalFooter') footer: TemplateRef<any>;
