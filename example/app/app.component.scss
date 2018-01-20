@@ -77,6 +77,14 @@ button.big {
   }
 }
 
+button.big-alternative {
+  background-color: #4FDAF0;
+
+  &:hover {
+    background-color: #4aabc9;
+  }
+}
+
 h1, h2 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
