@@ -37,4 +37,11 @@ export class ModalComponent implements OnDestroy {
       this.close();
     }
   }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDownHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape') {
+      this.close();
+    }
+  }
 }
