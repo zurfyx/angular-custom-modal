@@ -18,7 +18,7 @@
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
-      "styles": [],
+      "styles": ["./assets/css/bootstrap.min.css"],
       "scripts": [],
       "environmentSource": "config/environment.ts",
       "environments": {
