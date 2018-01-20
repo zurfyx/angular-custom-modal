@@ -1,11 +1,20 @@
 /* tslint:disable:component-selector */
 
-import { Component, OnDestroy, ContentChild, TemplateRef } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  ContentChild,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Input,
+  HostListener,
+} from '@angular/core';
 
 @Component({
   selector: 'modal',
   templateUrl: 'modal.component.html',
-  styleUrls: ['modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ModalComponent implements OnDestroy {
   @ContentChild('modalHeader') header: TemplateRef<any>;
@@ -13,6 +22,10 @@ export class ModalComponent implements OnDestroy {
   @ContentChild('modalFooter') footer: TemplateRef<any>;
 
   public visible = false;
+  private visibleAnimate = false;
+
+  constructor(private cd: ChangeDetectorRef) {
+  }
 
   ngOnDestroy() {
     // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -21,17 +34,28 @@ export class ModalComponent implements OnDestroy {
   }
 
   open(): void {
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 
     this.visible = true;
+    setTimeout(() => {
+      this.visibleAnimate = true;
+      this.cd.markForCheck();
+    }, 200);
+    this.cd.markForCheck();
   }
 
   close(): void {
-    document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
 
     this.visible = false;
+    setTimeout(() => {
+      this.visibleAnimate = false;
+      this.cd.markForCheck();
+    }, 100);
+    this.cd.markForCheck();
   }
 
+  @HostListener('click', ['$event'])
   onContainerClicked(event: MouseEvent): void {
     if ((<HTMLElement>event.target).classList.contains('modal')) {
       this.close();
