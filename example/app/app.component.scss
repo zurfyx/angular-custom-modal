@@ -1,43 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
 
-/* Specific Modal Styles */
-.modal-dialog {
-  color: #333;
-  background-color: #fff;
-  padding: 25px;
-}
-
-.modal.in {
-  display: initial;
-}
-
-.modal-header {
-  display: flex;
-  padding-bottom: 14px;
-
-  > h2 {
-    flex: 1;
-  }
-
-  .close {
-    background-color: #fff;
-    font-weight: 100;
-    font-size: 2.5rem;
-    border: 0;
-    border-radius: 999px;
-    padding: 0;
-    margin: 0;
-    line-height: 1rem;
-    height: 4rem;
-    width: 4rem;
-
-    &:hover {
-      background-color: #ccc;
-    }
-  }
-}
-/* /Specific Modal Styles */
-
 $color-highlight: #4aabc9;
 
 html, body {

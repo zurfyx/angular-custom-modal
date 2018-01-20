@@ -5,7 +5,6 @@ import { Component, OnDestroy, ContentChild, TemplateRef, Input, HostListener } 
 @Component({
   selector: 'modal',
   templateUrl: 'modal.component.html',
-  styleUrls: ['modal.component.scss'],
 })
 export class ModalComponent implements OnDestroy {
   @Input() customCloseButtonTemplate: TemplateRef<any>;
