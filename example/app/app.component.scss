@@ -1,14 +1,15 @@
+
 @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans');
 
 /* Specific Modal Styles */
-.modal-dialog {
+.modal.in {
+  display: initial;
+}
+
+.modal-content {
   color: #333;
   background-color: #fff;
   padding: 25px;
-}
-
-.modal.in {
-  display: initial;
 }
 
 .modal-header {
@@ -74,14 +75,6 @@ button.big {
 
   &:hover {
     background-color: #e4e4e4;
-  }
-}
-
-button.big-alternative {
-  background-color: #4FDAF0;
-
-  &:hover {
-    background-color: #4aabc9;
   }
 }
 
