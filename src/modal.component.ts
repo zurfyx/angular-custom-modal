@@ -14,7 +14,8 @@ import {
 @Component({
   selector: 'modal',
   templateUrl: 'modal.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['modal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent implements OnDestroy {
   @Input() customCloseButtonTemplate: TemplateRef<any>;
