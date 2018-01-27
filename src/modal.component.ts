@@ -22,10 +22,10 @@ export class ModalComponent implements OnDestroy {
   @ContentChild('modalBody') body: TemplateRef<any>;
   @ContentChild('modalFooter') footer: TemplateRef<any>;
 
-  public visible = false;
-  private visibleAnimate = false;
+  visible = false;
+  visibleAnimate = false;
 
-  constructor(private cd: ChangeDetectorRef) {
+  constructor(private changeDetectorRef: ChangeDetectorRef) {
   }
 
   ngOnDestroy() {
@@ -40,9 +40,9 @@ export class ModalComponent implements OnDestroy {
     this.visible = true;
     setTimeout(() => {
       this.visibleAnimate = true;
-      this.cd.markForCheck();
+      this.changeDetectorRef.markForCheck();
     }, 200);
-    this.cd.markForCheck();
+    this.changeDetectorRef.markForCheck();
   }
 
   close(): void {
@@ -51,9 +51,9 @@ export class ModalComponent implements OnDestroy {
     this.visible = false;
     setTimeout(() => {
       this.visibleAnimate = false;
-      this.cd.markForCheck();
+      this.changeDetectorRef.markForCheck();
     }, 100);
-    this.cd.markForCheck();
+    this.changeDetectorRef.markForCheck();
   }
 
   @HostListener('click', ['$event'])
