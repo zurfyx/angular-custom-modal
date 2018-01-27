@@ -1,78 +1,88 @@
 <div id="content">
   <h1>&lt;angular-custom-modal&gt;</h1>
 
-  <div id="actions">
-      <button (click)="toggleCssInjector()">toggle css injector</button>
-    <button class="big" (click)="componentInsideModal.open()">Component inside modal</button>
-    <!-- Alternatively we can define the open call on the component 
-      <button class="big" (click)="openFromComponent()"></button> -->
-    <button class="big" (click)="htmlInsideModal.open()">Raw HTML inside modal</button>
-    <button class="big" (click)="personalizedCloseButtonModal.open()">Personalized close button modal</button>
-    <button class="big" (click)="htmlInsideModalWithNestedModal.open()">Modal with nested modal</button>
+  <div class="reader">
+    <a class="switch neat" href="javascript:void(0)" (click)="toggleCssInjector()">
+      <span class="bubble" [class.fill]="modalCss === 0"></span> Bootstrap
+    </a>
 
-    <modal #componentInsideModal>
-      <ng-template #modalHeader><h2>Component inside modal</h2></ng-template>
-      <ng-template #modalBody>
-        <app-modal-content></app-modal-content>
-      </ng-template>
-      <ng-template #modalFooter></ng-template>
-    </modal>
+    <div id="actions">
+      <button class="big" (click)="componentInsideModal.open()">Component inside modal</button>
+      <!-- Alternatively we can define the open call on the component
+        <button class="big" (click)="openFromComponent()"></button> -->
+      <button class="big" (click)="htmlInsideModal.open()">Raw HTML inside modal</button>
+      <button class="big" (click)="personalizedCloseButtonModal.open()">Personalized close button modal</button>
+      <button class="big" (click)="htmlInsideModalWithNestedModal.open()">Modal with nested modal</button>
 
-    <modal #htmlInsideModal>
-      <ng-template #modalHeader><h2>HTML inside modal</h2></ng-template>
-      <ng-template #modalBody>
-        I'm HTML who's living on the &lt;app.component.html&gt;
-        <pre>
-          <code>
-&lt;button class=&quot;big&quot; (click)=&quot;htmlInsideModal.open()&quot;&gt;Raw HTML inside modal&lt;/button&gt;
-&lt;modal #htmlInsideModal&gt;
-&lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;
-&lt;ng-template #modalBody&gt;
-  I'm HTML who's living on the &lt;app.component.html&gt;
-  ...
-&lt;/ng-template&gt;
-&lt;/modal&gt;
-          </code>
-        </pre>
-      </ng-template>
-    </modal>
+      <!-- Example 1: Component Inside Modal -->
+      <modal #componentInsideModal>
+        <ng-template #modalHeader><h2>Component inside modal</h2></ng-template>
+        <ng-template #modalBody>
+          <app-modal-content></app-modal-content>
+        </ng-template>
+        <ng-template #modalFooter></ng-template>
+      </modal>
 
-    <ng-template #customCloseButton>
-      <button class="close" data-dismiss="modal" type="button" aria-label="Close" (click)="personalizedCloseButtonModal.close()">X</button>
-      <!-- Alternatively we can define the "close" button behaviour calling a function on the component
-      <button class="big" (click)="onButtonClick()"></button> -->
-    </ng-template>
-    <modal #personalizedCloseButtonModal [customCloseButtonTemplate]="customCloseButton">
-      <ng-template #modalHeader>
-        <h2>Personalized close button modal</h2>
-      </ng-template>
-      <ng-template #modalBody>
-        Here is an example that demonstrates how to change/personalize the close button behaviour/appearance
-      </ng-template>
-    </modal>
+      <!-- Example 2: HTML Inside Modal -->
+      <modal #htmlInsideModal>
+        <ng-template #modalHeader><h2>HTML inside modal</h2></ng-template>
+        <ng-template #modalBody>
+          I'm HTML who's living on the &lt;app.component.html&gt;
+          <pre>
+            <code>
+  &lt;button class=&quot;big&quot; (click)=&quot;htmlInsideModal.open()&quot;&gt;Raw HTML inside modal&lt;/button&gt;
+  &lt;modal #htmlInsideModal&gt;
+  &lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;
+  &lt;ng-template #modalBody&gt;
+    I'm HTML who's living on the &lt;app.component.html&gt;
+    ...
+  &lt;/ng-template&gt;
+  &lt;/modal&gt;
+            </code>
+          </pre>
+        </ng-template>
+      </modal>
 
-    <modal #htmlInsideModalWithNestedModal>
-      <ng-template #modalHeader>
-        <h2>HTML inside modal with nested modal</h2>
+      <!-- Example 3: Custom Close Button -->
+      <ng-template #customCloseButton>
+        <button class="close" data-dismiss="modal" type="button" aria-label="Close" (click)="personalizedCloseButtonModal.close()">x</button>
+        <!-- Alternatively we can define the "close" button behaviour calling a function on the component
+        <button class="big" (click)="onButtonClick()"></button> -->
       </ng-template>
-      <ng-template #modalBody>
-        I'm HTML who's living on the &lt;app.component.html&gt;<br>
-        This is for testing that ESC key press only close one modal.<br>
-        <button class="big big-alternative" (click)="nestedModal.open()">
-          Modal with nested modal
-        </button>
-        <modal #nestedModal>
-          <ng-template #modalHeader>
-            <button class="close" data-dismiss="modal" type="button" aria-label="Close"
-                    (click)="nestedModal.close()">×
-            </button>
-            <h2>Nested modal</h2>
-          </ng-template>
-          <ng-template #modalBody>
-            I'm HTML who's living on the &lt;app.component.html&gt; nested modal
-          </ng-template>
-        </modal>
-      </ng-template>
-    </modal>
+      <modal #personalizedCloseButtonModal [customCloseButtonTemplate]="customCloseButton">
+        <ng-template #modalHeader>
+          <h2>Personalized close button modal</h2>
+        </ng-template>
+        <ng-template #modalBody>
+          Here is an example that demonstrates how to change/personalize the close button behaviour/appearance
+        </ng-template>
+      </modal>
+
+      <!-- Example 4: Nested Modal -->
+      <modal #htmlInsideModalWithNestedModal>
+        <ng-template #modalHeader>
+          <h2>HTML inside modal with nested modal</h2>
+        </ng-template>
+        <ng-template #modalBody>
+          I'm HTML who's living on the &lt;app.component.html&gt;<br>
+          This is for testing that ESC key press only close one modal.<br>
+          <button class="big big-alternative" (click)="nestedModal.open()">
+            Modal with nested modal
+          </button>
+          <modal #nestedModal>
+            <ng-template #modalHeader>
+              <button class="close" data-dismiss="modal" type="button" aria-label="Close"
+                      (click)="nestedModal.close()">×
+              </button>
+              <h2>Nested modal</h2>
+            </ng-template>
+            <ng-template #modalBody>
+              I'm HTML who's living on the &lt;app.component.html&gt; nested modal
+            </ng-template>
+          </modal>
+        </ng-template>
+      </modal>
+
+    </div>
   </div>
 </div>

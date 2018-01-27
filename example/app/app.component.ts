@@ -15,6 +15,8 @@ const MODAL_CSS: string[] = [
 export class AppComponent implements OnInit {
   @ViewChild('componentInsideModal') componentInsideModal: ModalComponent;
 
+  modalCss = 0; // @See toggleCssInjector()
+
   ngOnInit() {
     this.toggleCssInjector();
   }
@@ -39,10 +41,10 @@ export class AppComponent implements OnInit {
     link.id = 'injected';
     link.type = 'text/css';
     link.rel = 'stylesheet';
-    link.href = MODAL_CSS[0];
+    link.href = MODAL_CSS[this.modalCss];
 
     head.appendChild(link);
 
-    MODAL_CSS.push(MODAL_CSS.shift());
+    this.modalCss = (this.modalCss + 1) % MODAL_CSS.length;
   }
 }
