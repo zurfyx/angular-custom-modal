@@ -4,6 +4,7 @@ import {
   Component,
   OnDestroy,
   ContentChild,
+  ElementRef,
   TemplateRef,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -25,8 +26,10 @@ export class ModalComponent implements OnDestroy {
   visible = false;
   visibleAnimate = false;
 
-  constructor(private changeDetectorRef: ChangeDetectorRef) {
-  }
+  constructor(
+    private elementRef: ElementRef,
+    private changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngOnDestroy() {
     // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -65,7 +68,8 @@ export class ModalComponent implements OnDestroy {
 
   @HostListener('document:keydown', ['$event'])
   onKeyDownHandler(event: KeyboardEvent) {
-    if (event.key === 'Escape') {
+    // If ESC key and TOP MOST modal, close it.
+    if (event.key === 'Escape' && !this.elementRef.nativeElement.querySelector(':scope modal > .modal')) {
       this.close();
     }
   }
