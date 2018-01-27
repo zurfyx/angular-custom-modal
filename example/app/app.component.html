@@ -44,25 +44,11 @@
 
       <!-- Example 3: Nested Modal -->
       <modal #htmlInsideModalWithNestedModal>
-        <ng-template #modalHeader>
-          <h2>HTML inside modal with nested modal</h2>
-        </ng-template>
+        <ng-template #modalHeader><h2>Nested modal</h2></ng-template>
         <ng-template #modalBody>
-          I'm HTML who's living on the &lt;app.component.html&gt;<br>
-          This is for testing that ESC key press only close one modal.<br>
-          <button class="big big-alternative" (click)="nestedModal.open()">
-            Modal with nested modal
-          </button>
+          <button (click)="nestedModal.open()">Open nested modal</button>
           <modal #nestedModal>
-            <ng-template #modalHeader>
-              <button class="close" data-dismiss="modal" type="button" aria-label="Close"
-                      (click)="nestedModal.close()">×
-              </button>
-              <h2>Nested modal</h2>
-            </ng-template>
-            <ng-template #modalBody>
-              I'm HTML who's living on the &lt;app.component.html&gt; nested modal
-            </ng-template>
+            <ng-template #modalBody>Nested modal content</ng-template>
           </modal>
         </ng-template>
       </modal>
