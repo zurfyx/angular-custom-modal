@@ -51,8 +51,8 @@ export class ModalComponent implements OnDestroy {
   close(): void {
     document.body.classList.remove('modal-open');
 
-    this.visible = false;
     setTimeout(() => {
+      this.visible = false;
       this.visibleAnimate = false;
       this.changeDetectorRef.markForCheck();
     }, 100);
@@ -61,7 +61,7 @@ export class ModalComponent implements OnDestroy {
 
   @HostListener('click', ['$event'])
   onContainerClicked(event: MouseEvent): void {
-    if ((<HTMLElement>event.target).classList.contains('modal')) {
+    if ((<HTMLElement>event.target).classList.contains('modal') && this.isTopMost()) {
       this.close();
     }
   }
@@ -69,8 +69,15 @@ export class ModalComponent implements OnDestroy {
   @HostListener('document:keydown', ['$event'])
   onKeyDownHandler(event: KeyboardEvent) {
     // If ESC key and TOP MOST modal, close it.
-    if (event.key === 'Escape' && !this.elementRef.nativeElement.querySelector(':scope modal > .modal')) {
+    if (event.key === 'Escape' && this.isTopMost()) {
       this.close();
     }
+  }
+
+  /**
+   * Returns true if this modal is the top most modal.
+   */
+  isTopMost(): boolean {
+    return !this.elementRef.nativeElement.querySelector(':scope modal > .modal');
   }
 }
