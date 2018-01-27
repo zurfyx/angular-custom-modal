@@ -16,7 +16,6 @@ import {
   selector: 'modal',
   templateUrl: 'modal.component.html',
   styleUrls: ['modal.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ModalComponent implements OnDestroy {
   @ContentChild('modalHeader') header: TemplateRef<any>;
@@ -43,20 +42,17 @@ export class ModalComponent implements OnDestroy {
     this.visible = true;
     setTimeout(() => {
       this.visibleAnimate = true;
-      this.changeDetectorRef.markForCheck();
-    }, 200);
-    this.changeDetectorRef.markForCheck();
+    });
   }
 
   close(): void {
     document.body.classList.remove('modal-open');
 
+    this.visibleAnimate = false;
     setTimeout(() => {
       this.visible = false;
-      this.visibleAnimate = false;
       this.changeDetectorRef.markForCheck();
-    }, 100);
-    this.changeDetectorRef.markForCheck();
+    }, 200);
   }
 
   @HostListener('click', ['$event'])

@@ -13,8 +13,13 @@
  * angular-cli assets).
  */
 
+.modal {
+  opacity: 0; /* Fade in/out animation. */
+  transition: opacity 0.2s ease-in;
+}
+
 .modal.in {
-  display: initial;
+  opacity: 1; /* Fade in/out animation. */
 }
 
 .modal-content {
@@ -45,6 +50,6 @@
   width: 4rem;
 }
 
- .modal-header .close:hover {
+.modal-header .close:hover {
   background-color: #ccc;
 }
