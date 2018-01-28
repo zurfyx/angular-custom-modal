@@ -2,7 +2,7 @@
   class="modal fade"
   role="dialog"
   tabindex="-1"
-  [ngClass]="{'in': visibleAnimate}"
+  [class.in]="visibleAnimate"
   *ngIf="visible">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -19,4 +19,3 @@
     </div>
   </div>
 </div>
-<div class="modal-backdrop fade in" *ngIf="visible"></div>
