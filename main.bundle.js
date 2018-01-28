@@ -37,7 +37,7 @@ webpackEmptyAsyncContext.id = "../../../../../example/$$_gendir lazy recursive";
 /***/ "../../../../../example/app/app-modal-content.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "I'm &lt;app-modal-content&gt; and it's only the &lt;modal&gt; who brought me to live. This component\nwill get destroyed when the modal is closed.\n\n<pre>\n  <code>\n&lt;button (click)=&quot;componentInsideModal.open()&quot;&gt;&lt;h2&gt;Component inside modal&lt;/h2&gt;&lt;/button&gt;\n&lt;modal #componentInsideModal&gt;\n  &lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;\n  &lt;ng-template #modalBody&gt;\n    &lt;app-modal-content&gt;&lt;/app-modal-content&gt;\n  &lt;/ng-template&gt;\n  &lt;ng-template #modalFooter&gt;&lt;/ng-template&gt;\n&lt;/modal&gt;\n  </code>\n</pre>"
+module.exports = "I'm &lt;app-modal-content&gt; and it's only the &lt;modal&gt; who brought me to live. This component\nwill get destroyed when the modal is closed.\n\n<pre>\n  <code>\n&lt;button (click)=&quot;componentInsideModal.open()&quot;&gt;Component inside modal&lt;/button&gt;\n&lt;modal #componentInsideModal&gt;\n  &lt;ng-template #modalHeader&gt;&lt;h2&gt;Component inside modal&lt;/h2&gt;&lt;/ng-template&gt;\n  &lt;ng-template #modalBody&gt;\n    &lt;app-modal-content&gt;&lt;/app-modal-content&gt;\n  &lt;/ng-template&gt;\n  &lt;ng-template #modalFooter&gt;&lt;/ng-template&gt;\n&lt;/modal&gt;\n  </code>\n</pre>"
 
 /***/ }),
 
@@ -87,7 +87,7 @@ AppModalContentComponent = __decorate([
 /***/ "../../../../../example/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"content\">\n  <h1>&lt;angular-custom-modal&gt;</h1>\n\n  <div id=\"actions\">\n    <button class=\"big\" (click)=\"componentInsideModal.open()\">Component inside modal</button>\n    <!-- Alternatively we can define the open call on the component \n      <button class=\"big\" (click)=\"openFromComponent()\"></button> -->\n    <button class=\"big\" (click)=\"htmlInsideModal.open()\">Raw HTML inside modal</button>\n\n    <modal #componentInsideModal>\n      <ng-template #modalHeader><h2>Component inside modal</h2></ng-template>\n      <ng-template #modalBody>\n        <app-modal-content></app-modal-content>\n      </ng-template>\n      <ng-template #modalFooter></ng-template>\n    </modal>\n\n    <modal #htmlInsideModal>\n      <ng-template #modalHeader><h2>HTML inside modal</h2></ng-template>\n      <ng-template #modalBody>\n        I'm HTML who's living on the &lt;app.component.html&gt;\n        <pre>\n          <code>\n&lt;button class=&quot;big&quot; (click)=&quot;htmlInsideModal.open()&quot;&gt;Raw HTML inside modal&lt;/button&gt;\n&lt;modal #htmlInsideModal&gt;\n&lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;\n&lt;ng-template #modalBody&gt;\n  I'm HTML who's living on the &lt;app.component.html&gt;\n  ...\n&lt;/ng-template&gt;\n&lt;/modal&gt;\n          </code>\n        </pre>\n      </ng-template>\n    </modal>\n  </div>\n</div>"
+module.exports = "<div id=\"content\">\n  <h1>&lt;angular-custom-modal&gt;</h1>\n\n  <div class=\"reader\">\n    <a class=\"switch neat\" href=\"javascript:void(0)\" (click)=\"toggleCssInjector()\">\n      <span class=\"bubble\" [class.fill]=\"modalCss === 0\"></span> Bootstrap\n    </a>\n\n    <div id=\"actions\">\n      <button class=\"big\" (click)=\"componentInsideModal.open()\">Component inside modal</button>\n      <!-- Alternatively we can define the open call on the component\n        <button class=\"big\" (click)=\"openFromComponent()\"></button> -->\n      <button class=\"big\" (click)=\"htmlInsideModal.open()\">Raw HTML inside modal</button>\n      <button class=\"big\" (click)=\"nestedModal.open()\">Modal with nested modal</button>\n\n      <!-- Example 1: Component Inside Modal -->\n      <modal #componentInsideModal>\n        <ng-template #modalHeader><h2>Component inside modal</h2></ng-template>\n        <ng-template #modalBody>\n          <app-modal-content></app-modal-content>\n        </ng-template>\n        <ng-template #modalFooter></ng-template>\n      </modal>\n\n      <!-- Example 2: HTML Inside Modal -->\n      <modal #htmlInsideModal>\n        <ng-template #modalHeader><h2>HTML inside modal</h2></ng-template>\n        <ng-template #modalBody>\n          I'm HTML who's living on the &lt;app.component.html&gt;\n          <pre>\n            <code>\n  &lt;button class=&quot;big&quot; (click)=&quot;htmlInsideModal.open()&quot;&gt;Raw HTML inside modal&lt;/button&gt;\n  &lt;modal #htmlInsideModal&gt;\n  &lt;ng-template #modalHeader&gt;&lt;h2&gt;Component inside modal&lt;/h2&gt;&lt;/ng-template&gt;\n  &lt;ng-template #modalBody&gt;\n    I'm HTML who's living on the &lt;app.component.html&gt;\n    ...\n  &lt;/ng-template&gt;\n  &lt;/modal&gt;\n            </code>\n          </pre>\n        </ng-template>\n      </modal>\n\n      <!-- Example 3: Nested Modal -->\n      <modal #nestedModal>\n        <ng-template #modalHeader><h2>Nested modal</h2></ng-template>\n        <ng-template #modalBody>\n          Nested modals can be created by simply adding a &lt;modal&gt; inside a &lt;modal&gt;\n          <pre>\n            <code>\n&lt;button class=&quot;big&quot; (click)=&quot;nestedModal.open()&quot;&gt;Modal with nested modal&lt;/button&gt;\n&lt;modal #nestedModal&gt;\n  &lt;ng-template #modalHeader&gt;&lt;h2&gt;Nested modal&lt;/h2&gt;&lt;/ng-template&gt;\n  &lt;ng-template #modalBody&gt;\n    Nested modals can be created by simply adding a &lt;modal&gt; inside a &lt;modal&gt;\n    ...\n    &lt;button (click)=&quot;nestedModalX.open()&quot;&gt;Open nested modal&lt;/button&gt;\n    &lt;modal #nestedModalX&gt;\n      &lt;ng-template #modalBody&gt;This is the nested modal content.&lt;/ng-template&gt;\n    &lt;/modal&gt;\n  &lt;/ng-template&gt;\n&lt;/modal&gt;\n            </code>\n          </pre>\n          <button (click)=\"nestedModalX.open()\">Open nested modal</button>\n          <modal #nestedModalX>\n            <ng-template #modalBody>This is the nested modal content.</ng-template>\n          </modal>\n        </ng-template>\n      </modal>\n\n    </div>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -99,7 +99,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Montserrat|Open+Sans);", ""]);
 
 // module
-exports.push([module.i, "/* Specific Modal Styles */\n.modal-dialog {\n  color: #333;\n  background-color: #fff;\n  padding: 25px; }\n\n.modal.in {\n  display: initial; }\n\n.modal-header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  padding-bottom: 14px; }\n  .modal-header > h2 {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1; }\n  .modal-header .close {\n    background-color: #fff;\n    font-weight: 100;\n    font-size: 2.5rem;\n    border: 0;\n    border-radius: 999px;\n    padding: 0;\n    margin: 0;\n    line-height: 1rem;\n    height: 4rem;\n    width: 4rem; }\n    .modal-header .close:hover {\n      background-color: #ccc; }\n\n/* /Specific Modal Styles */\nhtml, body {\n  color: #444;\n  font-family: 'Open Sans', sans-serif;\n  background: #4aabc9;\n  background: linear-gradient(135deg, #4aabc9 0%, #7db9e8 100%);\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  height: 100%; }\n\nbutton {\n  cursor: pointer;\n  font-family: 'Open Sans', sans-serif;\n  transition: .2s all; }\n  button:focus {\n    outline: none; }\n\nbutton.big {\n  color: #444;\n  padding: 2rem 4rem;\n  border: 0;\n  border-radius: 4px;\n  background-color: #fff; }\n  button.big + button.big {\n    margin-left: 10px; }\n  button.big:hover {\n    background-color: #e4e4e4; }\n\nh1, h2 {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 200; }\n\nh1 {\n  color: #fff;\n  padding: 30px;\n  margin: 0; }\n\n#content {\n  height: 100%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column; }\n\n#actions {\n  margin-top: -100px;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n", ""]);
+exports.push([module.i, "html, body {\n  color: #444;\n  font-family: 'Open Sans', sans-serif;\n  background: #4aabc9;\n  background: linear-gradient(135deg, #4aabc9 0%, #7db9e8 100%);\n  margin: 0;\n  padding: 0;\n  width: 100%;\n  height: 100%; }\n\nbutton {\n  cursor: pointer;\n  font-family: 'Open Sans', sans-serif;\n  transition: .2s all; }\n  button:focus {\n    outline: none; }\n\nbutton.big {\n  color: #444;\n  padding: 2rem 4rem;\n  border: 0;\n  border-radius: 4px;\n  background-color: #fff; }\n  button.big:hover {\n    background-color: #e4e4e4; }\n\nh1, h2 {\n  font-family: 'Montserrat', sans-serif;\n  font-weight: 200; }\n\nh1 {\n  color: #fff;\n  padding: 30px;\n  margin: 0; }\n\na.neat {\n  color: inherit;\n  text-decoration: none; }\n\n.bubble {\n  display: inline-block;\n  width: 0.5em;\n  height: 0.5em;\n  border: 2px solid #fff;\n  border-radius: 0.8em; }\n  .bubble.fill {\n    background-color: #fff; }\n\n.reader {\n  margin: 0 auto;\n  max-width: 600px;\n  margin-top: 10%; }\n\na.switch {\n  display: block;\n  margin-left: auto;\n  margin-right: 0;\n  text-align: right;\n  font-size: 0.9em;\n  font-weight: 600;\n  color: #fff; }\n\n#content {\n  height: 100%; }\n\n#actions {\n  margin-top: 2rem;\n  display: -ms-grid;\n  display: grid;\n  -ms-grid-columns: (50%)[2];\n      grid-template-columns: repeat(2, 50%);\n  grid-gap: 1rem; }\n", ""]);
 
 // exports
 
@@ -127,11 +127,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+var MODAL_CSS = [
+    'assets/modal.css',
+    'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css',
+];
 var AppComponent = (function () {
     function AppComponent() {
+        this.modalCss = 0; // @See toggleCssInjector()
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.toggleCssInjector();
+    };
     AppComponent.prototype.openFromComponent = function () {
         this.componentInsideModal.open();
+    };
+    // ToggleCssInjector is just for the sake of the demo, switching between custom and Boostrap
+    // styles. In your web app you should rather choose one or the other.
+    // Web styles reside in ./modal.css
+    // Alternatively you can pick Boostrap
+    AppComponent.prototype.toggleCssInjector = function () {
+        var prev = document.getElementById('injected');
+        if (prev) {
+            prev.parentNode.removeChild(prev);
+        }
+        var head = document.head;
+        var link = document.createElement('link');
+        link.id = 'injected';
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.href = MODAL_CSS[this.modalCss];
+        head.appendChild(link);
+        this.modalCss = (this.modalCss + 1) % MODAL_CSS.length;
     };
     return AppComponent;
 }());
@@ -237,7 +263,7 @@ Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* pl
 /***/ "../../../../../src/modal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div\n  (click)=\"onContainerClicked($event)\"\n  class=\"modal fade\"\n  tabindex=\"-1\"\n  [ngClass]=\"{'in': visibleAnimate}\"\n  [ngStyle]=\"{'display': visible ? 'block' : 'none', 'opacity': visible ? 1 : 0}\"\n  *ngIf=\"visible\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <ng-container *ngTemplateOutlet=\"header\"></ng-container>\n        <button class=\"close\" data-dismiss=\"modal\" type=\"button\" aria-label=\"Close\" (click)=\"close()\">×</button>\n      </div>\n      <div class=\"modal-body\">\n        <ng-container *ngTemplateOutlet=\"body\"></ng-container>\n      </div>\n      <div class=\"modal-footer\">\n        <ng-container *ngTemplateOutlet=\"footer\"></ng-container>\n      </div>\n    </div>\n  </div>\n</div>"
+module.exports = "<div \n  class=\"modal fade\"\n  role=\"dialog\"\n  tabindex=\"-1\"\n  [class.in]=\"visibleAnimate\"\n  *ngIf=\"visible\">\n  <div class=\"modal-dialog\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <ng-container *ngTemplateOutlet=\"header\"></ng-container>\n        <button class=\"close\" data-dismiss=\"modal\" type=\"button\" aria-label=\"Close\" (click)=\"close()\">×</button>\n      </div>\n      <div class=\"modal-body\">\n        <ng-container *ngTemplateOutlet=\"body\"></ng-container>\n      </div>\n      <div class=\"modal-footer\">\n        <ng-container *ngTemplateOutlet=\"footer\"></ng-container>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -249,7 +275,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/deep/ .modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  min-height: 100%;\n  background-color: rgba(0, 0, 0, 0.15);\n  z-index: 42; }\n\n/deep/ .modal-dialog {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%); }\n", ""]);
+exports.push([module.i, "/**\n * A more specific selector overwrites bootstrap display properties, but they still enable users\n * to overwite them on their apps.\n */\n/deep/ modal .modal {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-flex: 1;\n      -ms-flex: 1;\n          flex: 1;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center; }\n\n/deep/ .modal {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  min-height: 100%;\n  background-color: rgba(0, 0, 0, 0.15);\n  z-index: 42; }\n\n/deep/ .modal.in {\n  opacity: 1; }\n", ""]);
 
 // exports
 
@@ -277,8 +303,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 var ModalComponent = (function () {
-    function ModalComponent() {
+    function ModalComponent(elementRef, changeDetectorRef) {
+        this.elementRef = elementRef;
+        this.changeDetectorRef = changeDetectorRef;
         this.visible = false;
+        this.visibleAnimate = false;
     }
     ModalComponent.prototype.ngOnDestroy = function () {
         // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -286,17 +315,38 @@ var ModalComponent = (function () {
         this.close();
     };
     ModalComponent.prototype.open = function () {
-        document.body.style.overflow = 'hidden';
+        var _this = this;
+        document.body.classList.add('modal-open');
         this.visible = true;
+        setTimeout(function () {
+            _this.visibleAnimate = true;
+        });
     };
     ModalComponent.prototype.close = function () {
-        document.body.style.overflow = 'auto';
-        this.visible = false;
+        var _this = this;
+        document.body.classList.remove('modal-open');
+        this.visibleAnimate = false;
+        setTimeout(function () {
+            _this.visible = false;
+            _this.changeDetectorRef.markForCheck();
+        }, 200);
     };
     ModalComponent.prototype.onContainerClicked = function (event) {
-        if (event.target.classList.contains('modal')) {
+        if (event.target.classList.contains('modal') && this.isTopMost()) {
             this.close();
         }
+    };
+    ModalComponent.prototype.onKeyDownHandler = function (event) {
+        // If ESC key and TOP MOST modal, close it.
+        if (event.key === 'Escape' && this.isTopMost()) {
+            this.close();
+        }
+    };
+    /**
+     * Returns true if this modal is the top most modal.
+     */
+    ModalComponent.prototype.isTopMost = function () {
+        return !this.elementRef.nativeElement.querySelector(':scope modal > .modal');
     };
     return ModalComponent;
 }());
@@ -312,15 +362,28 @@ __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["r" /* ContentChild */])('modalFooter'),
     __metadata("design:type", typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* TemplateRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* TemplateRef */]) === "function" && _c || Object)
 ], ModalComponent.prototype, "footer", void 0);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */])('click', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ModalComponent.prototype, "onContainerClicked", null);
+__decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["z" /* HostListener */])('document:keydown', ['$event']),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ModalComponent.prototype, "onKeyDownHandler", null);
 ModalComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
         selector: 'modal',
         template: __webpack_require__("../../../../../src/modal.component.html"),
         styles: [__webpack_require__("../../../../../src/modal.component.scss")],
-    })
+    }),
+    __metadata("design:paramtypes", [typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ElementRef */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["k" /* ChangeDetectorRef */]) === "function" && _e || Object])
 ], ModalComponent);
 
-var _a, _b, _c;
+var _a, _b, _c, _d, _e;
 //# sourceMappingURL=modal.component.js.map
 
 /***/ }),
