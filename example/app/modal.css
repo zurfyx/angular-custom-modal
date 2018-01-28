@@ -13,6 +13,10 @@
  * angular-cli assets).
  */
 
+body.modal-open {
+  overflow: hidden; /* Optional: hides body scroll bar when modal is open. */
+}
+
 .modal {
   opacity: 0; /* Fade in/out animation. */
   transition: opacity 0.2s ease-in;
