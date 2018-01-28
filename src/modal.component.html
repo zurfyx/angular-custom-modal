@@ -1,9 +1,8 @@
-<div
-  (click)="onContainerClicked($event)"
+<div 
   class="modal fade"
+  role="dialog"
   tabindex="-1"
-  [ngClass]="{'in': visibleAnimate}"
-  [ngStyle]="{'display': visible ? 'block' : 'none', 'opacity': visible ? 1 : 0}"
+  [class.in]="visibleAnimate"
   *ngIf="visible">
   <div class="modal-dialog">
     <div class="modal-content">

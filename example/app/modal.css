@@ -1,0 +1,55 @@
+/**
+ * As a user:
+ * If you're looking forward the default modal styles on the web, this is the relevant source code.
+ * You can find the complete styles (page background, positioning, etc.) in app.component.scss, but
+ * you're unlikely to need it.
+ *
+ * If you going to use Bootstrap, you probably do not need the code below. Simply import the
+ * Boostrap library into your Angular project.
+ *
+ * Angular-custom-modal developer note:
+ * This file is not imported through app.component.ts due to the example switching between custom
+ * and Boostrap. We are injecting this file with JS instead (by using the URL provided through the
+ * angular-cli assets).
+ */
+
+body.modal-open {
+  overflow: hidden; /* Optional: hides body scroll bar when modal is open. */
+}
+
+.modal {
+  opacity: 0; /* Fade in/out animation. */
+  transition: opacity 0.2s ease-in;
+}
+
+.modal-content {
+  color: #333;
+  background-color: #fff;
+  padding: 25px;
+}
+
+.modal-header {
+  display: flex;
+  padding-bottom: 14px;
+}
+
+.modal-header  > h2 {
+  flex: 1;
+}
+
+.modal-header .close {
+  background-color: #fff;
+  font-weight: 100;
+  font-size: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  height: 4rem;
+  width: 4rem;
+}
+
+.modal-header .close:hover {
+  background-color: #ccc;
+}

@@ -1,6 +1,16 @@
 /* tslint:disable:component-selector */
 
-import { Component, OnDestroy, ContentChild, TemplateRef } from '@angular/core';
+import {
+  Component,
+  OnDestroy,
+  ContentChild,
+  ElementRef,
+  TemplateRef,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Input,
+  HostListener,
+} from '@angular/core';
 
 @Component({
   selector: 'modal',
@@ -12,7 +22,13 @@ export class ModalComponent implements OnDestroy {
   @ContentChild('modalBody') body: TemplateRef<any>;
   @ContentChild('modalFooter') footer: TemplateRef<any>;
 
-  public visible = false;
+  visible = false;
+  visibleAnimate = false;
+
+  constructor(
+    private elementRef: ElementRef,
+    private changeDetectorRef: ChangeDetectorRef
+  ) { }
 
   ngOnDestroy() {
     // Prevent modal from not executing its closing actions if the user navigated away (for example,
@@ -21,20 +37,43 @@ export class ModalComponent implements OnDestroy {
   }
 
   open(): void {
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
 
     this.visible = true;
+    setTimeout(() => {
+      this.visibleAnimate = true;
+    });
   }
 
   close(): void {
-    document.body.style.overflow = 'auto';
+    document.body.classList.remove('modal-open');
 
-    this.visible = false;
+    this.visibleAnimate = false;
+    setTimeout(() => {
+      this.visible = false;
+      this.changeDetectorRef.markForCheck();
+    }, 200);
   }
 
+  @HostListener('click', ['$event'])
   onContainerClicked(event: MouseEvent): void {
-    if ((<HTMLElement>event.target).classList.contains('modal')) {
+    if ((<HTMLElement>event.target).classList.contains('modal') && this.isTopMost()) {
       this.close();
     }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  onKeyDownHandler(event: KeyboardEvent) {
+    // If ESC key and TOP MOST modal, close it.
+    if (event.key === 'Escape' && this.isTopMost()) {
+      this.close();
+    }
+  }
+
+  /**
+   * Returns true if this modal is the top most modal.
+   */
+  isTopMost(): boolean {
+    return !this.elementRef.nativeElement.querySelector(':scope modal > .modal');
   }
 }
