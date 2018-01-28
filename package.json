@@ -6,8 +6,9 @@
     "email": "zurfyx@gmail.com",
     "url": "zurfyx.com"
   },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
+  "main": "src/index.ts",
   "scripts": {
     "start": "ng serve",
     "build": "ng-packagr -p ng-package.json",
