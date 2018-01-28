@@ -11,7 +11,7 @@
       <!-- Alternatively we can define the open call on the component
         <button class="big" (click)="openFromComponent()"></button> -->
       <button class="big" (click)="htmlInsideModal.open()">Raw HTML inside modal</button>
-      <button class="big" (click)="htmlInsideModalWithNestedModal.open()">Modal with nested modal</button>
+      <button class="big" (click)="nestedModal.open()">Modal with nested modal</button>
 
       <!-- Example 1: Component Inside Modal -->
       <modal #componentInsideModal>
@@ -31,7 +31,7 @@
             <code>
   &lt;button class=&quot;big&quot; (click)=&quot;htmlInsideModal.open()&quot;&gt;Raw HTML inside modal&lt;/button&gt;
   &lt;modal #htmlInsideModal&gt;
-  &lt;ng-template #modalHeader&gt;Component inside modal&lt;/ng-template&gt;
+  &lt;ng-template #modalHeader&gt;&lt;h2&gt;Component inside modal&lt;/h2&gt;&lt;/ng-template&gt;
   &lt;ng-template #modalBody&gt;
     I'm HTML who's living on the &lt;app.component.html&gt;
     ...
@@ -43,12 +43,29 @@
       </modal>
 
       <!-- Example 3: Nested Modal -->
-      <modal #htmlInsideModalWithNestedModal>
+      <modal #nestedModal>
         <ng-template #modalHeader><h2>Nested modal</h2></ng-template>
         <ng-template #modalBody>
-          <button (click)="nestedModal.open()">Open nested modal</button>
-          <modal #nestedModal>
-            <ng-template #modalBody>Nested modal content</ng-template>
+          Nested modals can be created by simply adding a &lt;modal&gt; inside a &lt;modal&gt;
+          <pre>
+            <code>
+&lt;button class=&quot;big&quot; (click)=&quot;nestedModal.open()&quot;&gt;Modal with nested modal&lt;/button&gt;
+&lt;modal #nestedModal&gt;
+  &lt;ng-template #modalHeader&gt;&lt;h2&gt;Nested modal&lt;/h2&gt;&lt;/ng-template&gt;
+  &lt;ng-template #modalBody&gt;
+    Nested modals can be created by simply adding a &lt;modal&gt; inside a &lt;modal&gt;
+    ...
+    &lt;button (click)=&quot;nestedModalX.open()&quot;&gt;Open nested modal&lt;/button&gt;
+    &lt;modal #nestedModalX&gt;
+      &lt;ng-template #modalBody&gt;This is the nested modal content.&lt;/ng-template&gt;
+    &lt;/modal&gt;
+  &lt;/ng-template&gt;
+&lt;/modal&gt;
+            </code>
+          </pre>
+          <button (click)="nestedModalX.open()">Open nested modal</button>
+          <modal #nestedModalX>
+            <ng-template #modalBody>This is the nested modal content.</ng-template>
           </modal>
         </ng-template>
       </modal>

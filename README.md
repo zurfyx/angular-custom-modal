@@ -19,12 +19,19 @@ npm install angular-custom-modal
 
 ## Features
 
+Core:
+
 - Light: no CSS / JS frameworks attached
-- Bootstrap CSS compatible
+- [Bootstrap 3 & 4 CSS compatible](#bootstrap)
 - Custom modal header, body and header
-- Modal stacking support
+- [Modal stacking support](#nested-modal)
 - Lazy inner component initialization, and `ngOnDestroy`(ed) when modal is closed
-- Parent scrolling disabled when modal is visible
+
+Minor:
+
+- Optional CSS animations
+- Optional parent scrolling when modal is visible
+- Escape or button to close modal
 
 ## Usage
 
@@ -85,6 +92,24 @@ app.component.html
 </modal>
 ```
 
+### Nested Modal
+
+app.component.html
+
+```
+<modal #nestedModal>
+  <ng-template #modalHeader><h2>Nested modal</h2></ng-template>
+  <ng-template #modalBody>
+    Nested modals can be created by simply adding a &lt;modal&gt; inside a &lt;modal&gt;
+    ...
+    <button (click)="nestedModalX.open()">Open nested modal</button>
+    <modal #nestedModalX>
+      <ng-template #modalBody>This is the nested modal content.</ng-template>
+    </modal>
+  </ng-template>
+</modal>
+```
+
 See [example source code](https://github.com/zurfyx/angular-custom-modal/tree/master/example/app) for more information.
 
 **Why ng-template?**
@@ -101,16 +126,15 @@ https://netbasal.com/understanding-viewchildren-contentchildren-and-querylist-in
 
 ## Styles
 
-The library carries the minimum generic styles. Styles are up to you.
+The library carries the minimum generic styles. Beautifying it is up to you.
 
-You can find the demo copy-paste styles in [app.component.scss](https://github.com/zurfyx/angular-custom-modal/blob/master/example/app/app.component.scss) (specific modal styles starting [here](https://github.com/zurfyx/angular-custom-modal/blob/master/example/app/app.component.scss#L3)).
+### Default styles
 
-## TODO
+You can find the demo copy-paste styles in [modal.css](https://github.com/zurfyx/angular-custom-modal/blob/master/example/app/modal.css).
 
-- [ ] Modal header/body/footer as a component or directive (not sure if feasable)
-- [ ] Optional styles
-- [ ] Optional scrolling when modal is active
-- [ ] Optional visibility
+### Bootstrap
+
+Bootstrap users require no additional CSS other than the Bootstrap library (either version 3 or 4).
 
 ## Special thanks
 
