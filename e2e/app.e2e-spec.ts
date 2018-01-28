@@ -1,3 +1,5 @@
+import { browser, protractor } from 'protractor';
+
 import { AppPage } from './app.po';
 
 describe('App', () => {
@@ -28,9 +30,16 @@ describe('App', () => {
     expect(page.getAppModalContent().isPresent()).toBe(false);
   });
 
-  // it('should close when clicking outside modal', () => {
-  //   page.getComponentModalButton().click();
-  //   page.getModal().click();
-  //   expect(page.getAppModalContent().isPresent()).toBe(false);
-  // });
+  it('should close when clicking outside modal', () => {
+    page.getComponentModalButton().click();
+    // page.getModal().click();
+    browser.executeScript('document.querySelector(\'.modal\').click()');
+    expect(page.getAppModalContent().isPresent()).toBe(false);
+  });
+
+  it('should close when clicking the escape key', () => {
+    page.getComponentModalButton().click();
+    browser.actions().sendKeys(protractor.Key.ESCAPE).perform();
+    expect(page.getAppModalContent().isPresent()).toBe(false);
+  });
 });
