@@ -32,8 +32,16 @@ describe('App', () => {
 
   it('should close when clicking outside modal', () => {
     page.getComponentModalButton().click();
-    // page.getModal().click();
     browser.executeScript('document.querySelector(\'.modal\').click()');
+    expect(page.getAppModalContent().isPresent()).toBe(false);
+  });
+
+  it('should not close when clicking outside modal and closeOnOutsideClick set to false', () => {
+    const button = page.getComponentOutsideClickButton();
+    browser.executeScript('arguments[0].click();', button.getWebElement()); // Button is hidden.
+    browser.executeScript('document.querySelector(\'.modal\').click()');
+    expect(page.getModalBody().isPresent()).toBe(true);
+    page.getCloseButton().click();
     expect(page.getAppModalContent().isPresent()).toBe(false);
   });
 

@@ -21,6 +21,7 @@ export class ModalComponent implements OnDestroy {
   @ContentChild('modalHeader') header: TemplateRef<any>;
   @ContentChild('modalBody') body: TemplateRef<any>;
   @ContentChild('modalFooter') footer: TemplateRef<any>;
+  @Input() closeOnOutsideClick = true;
 
   visible = false;
   visibleAnimate = false;
@@ -57,7 +58,7 @@ export class ModalComponent implements OnDestroy {
 
   @HostListener('click', ['$event'])
   onContainerClicked(event: MouseEvent): void {
-    if ((<HTMLElement>event.target).classList.contains('modal') && this.isTopMost()) {
+    if ((<HTMLElement>event.target).classList.contains('modal') && this.isTopMost() && this.closeOnOutsideClick) {
       this.close();
     }
   }

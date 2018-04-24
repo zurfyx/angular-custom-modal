@@ -17,8 +17,16 @@ export class AppPage {
     return element(by.buttonText('Raw HTML inside modal'));
   }
 
+  getComponentOutsideClickButton() {
+    return element(by.buttonText('Prevent modal to be dismissed when clicking outside it'));
+  }
+
   getModal() {
     return element(by.css('.modal'));
+  }
+
+  getModalBody() {
+    return element(by.css('.modal-body'));
   }
 
   getModalBodyText() {
