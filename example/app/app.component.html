@@ -12,6 +12,7 @@
         <button class="big" (click)="openFromComponent()"></button> -->
       <button class="big" (click)="htmlInsideModal.open()">Raw HTML inside modal</button>
       <button class="big" (click)="nestedModal.open()">Modal with nested modal</button>
+      <button class="hidden" (click)="ignoreClickOutside.open()">Prevent modal to be dismissed when clicking outside it</button>
 
       <!-- Example 1: Component Inside Modal -->
       <modal #componentInsideModal>
@@ -69,6 +70,9 @@
           </modal>
         </ng-template>
       </modal>
+
+      <!--- Example 4: Prevent modal to be dismissed when clicking outside it -->
+      <modal #ignoreClickOutside [closeOnOutsideClick]="false"></modal>
 
     </div>
   </div>
