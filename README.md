@@ -136,6 +136,20 @@ You can find the demo copy-paste styles in [modal.css](https://github.com/zurfyx
 
 Bootstrap users require no additional CSS other than the Bootstrap library (either version 3 or 4).
 
+## API
+
+### ModalComponent
+
+| Name | Type | Description |
+| ----| ----- | ----------- |
+| header | @ContentChild('modalHeader'): TemplateRef<any> | Angular Template (`<ng-template>`) to use as header. |
+| body | @ContentChild('modalBody'): TemplateRef<any> | Angular Template (`ng-template`) to use as body. |
+| footer | @ContentChild('modalFooter'): TemplateRef<any> | Angular Template (`ng-template`) to use as footer. |
+| closeOnOutsideClick | @Input(): boolean = true | When set to `true` modal will close when a click is performed outside the modal container. |
+open | () => void | Opens the modal.
+| close | () => void | Closes the modal. |
+| isTopMost | () => boolean | Returns true is the modal is the top most modal, or false if it is underneath another modal. |
+
 ## Special thanks
 
 To [Stephen Paul](https://stackoverflow.com/users/1087131/stephen-paul) for the [initial Angular 2 Modal version](https://stackoverflow.com/a/40144809/2013580).
